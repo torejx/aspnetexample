@@ -14,22 +14,9 @@ namespace WebApplication1.Controllers
         [HttpPost("hello")]
         public IActionResult Hello([FromBody] Person person)
         {
-            try
+            if (!ModelState.IsValid)
             {
-                if (String.IsNullOrEmpty(person.Surname))
-                {
-                    throw new Exception("Surname is mandatory");
-                }
-                if (String.IsNullOrEmpty(person.Name))
-                {
-                    throw new Exception("Surname is mandatory");
-                }
-            }
-            catch(Exception e)
-            {
-                return new BadRequestObjectResult(
-                    new { error = e.Message}
-                );
+                return BadRequest(ModelState);
             }
             return Ok(person);
         }
