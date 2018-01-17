@@ -11,6 +11,12 @@ namespace WebApplication1.Controllers
     public class TestController : Controller
     {
 
+        [HttpPost("hello")]
+        public IActionResult Hello([FromBody] Person person)
+        {
+            return Ok(person);
+        }
+
         [HttpGet("hello/{name}/{surname}")]
         public string Hello(string name, string surname)
         {
