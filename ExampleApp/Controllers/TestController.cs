@@ -3,21 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using WebApplication1.Models;
+using Example.Models;
 
-namespace WebApplication1.Controllers
+namespace Example.Controllers
 {
     [Route("api/[controller]")]
     public class TestController : Controller
     {
-
         [HttpPost("hello")]
         public IActionResult Hello([FromBody] Person person)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
             return Ok(person);
         }
 
