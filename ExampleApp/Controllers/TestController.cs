@@ -14,10 +14,12 @@ namespace WebApplication1.Controllers
         [HttpGet("hello/{name}/{surname}")]
         public string Hello(string name, string surname)
         {
-            var person = new Person();
-            person.Name = name;
-            person.Surname = surname;
-            return $"Hello {person.Name} {person.Surname}";
+            var person = new Person()
+            {
+                Name = name,
+                Surname = surname
+            };
+            return $"Hello {person.Name} {person.Surname}, or if you prefer {person.Signature}";
         }
     }
 }
